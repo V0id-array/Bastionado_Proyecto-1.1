@@ -2,6 +2,9 @@
 
 ![imagen.png](Proyecto%20bastionado%2012ac935dfacf804cbdbbfe57644bb998/imagen.png)
 
+## Introducción
+En este proyecto se explorarán opciones del sistema UEFI/BIOS y del sistema de arranque en Linux para mejorar la seguridad del sistema. Se elaborará una guía paso a paso de como podemos aplicar estos ajustes y así minimizar la superficie de ataque de nuesto equipo.
+
 ## Configuración de BIOS/UEFI
 
 ### Entorno:
@@ -285,3 +288,6 @@ $ sudo update-grub
 En el enlace de la fuente se pueden encontrar más opciones con las que para customizar el kernel o descargarnos. [https://www.kicksecure.com/wiki/Hardened-kernel](https://www.kicksecure.com/wiki/Hardened-kernel) 
 
 También podemos descargarnos la configuración del proyecto [hardened-kernel](https://www.kicksecure.com/wiki/Download)
+
+## Conclusión 
+El hardening en Linux es un proceso continuo que requiere atención y adaptación a medida que surgen nuevas amenazas. Implementar las mejores prácticas descritas no solo ayuda a proteger el sistema contra ataques, sino que también contribuye al cumplimiento de normativas y estándares de seguridad. Al adoptar un enfoque proactivo hacia la seguridad, los administradores pueden garantizar que sus sistemas Linux operen en un entorno seguro y resiliente. 
