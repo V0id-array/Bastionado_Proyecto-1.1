@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-11-05T22:43:02+01:00",
+  "id": "11",
+  "duration": 0,
+  "title": "Proyecto bastionado",
+  "summary": "Proyecto sobre hardened de BIOS",
+  "source": "README.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "bios"
+  ],
+  "feedback": "https://github.com/V0id-array/Bastionado_Proyecto-1.1/issues",
+  "url": "11"
+}

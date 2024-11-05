@@ -1,0 +1,108 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Proyecto bastionado</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="11"
+                  title="Proyecto bastionado"
+                  environment="web"
+                  feedback-link="https://github.com/V0id-array/Bastionado_Proyecto-1.1/issues">
+    
+      <google-codelab-step label="Introducción" duration="0">
+        <p>En este proyecto se explorarán opciones del sistema UEFI/BIOS para  con el objetivo de dificultar el acceso no autorizado al sistema y protegerlo contra posibles ataques. Se elaborará una guía paso a paso de como podemos aplicar estos ajustes y así minimizar la superficie de ataque de nuesto equipo.</p>
+<h2 is-upgraded>Entorno:</h2>
+<p>En esta practica he trabajado con la BIOS/UEFI de un portatil Lenovo yoga 720 con procesador intel de 7ª generación.</p>
+<p class="image-container"><img alt="imagen.png" src="img/1036e99e6ab982de.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Contraseña de administración de la BIOS:" duration="0">
+        <p>En la opción de <strong>Security&lt;&#34;Set administrative password&#34;</strong> se puede añadir una contraseña para el acceso a la BIOS/UEFI.</p>
+<p>Es importante anotar esta contraseña ya que la única manera de rrestaurarla es restaurando la configuración de fabrica de la placa base, lo cual requiere desmota el portátil y quitar la pila de la BIOS o hacer un puente un unos pines dedicados para ello.</p>
+<p class="image-container"><img alt="imagen.png" src="img/d8c7bc552fea2c1a.png"></p>
+<p class="image-container"><img alt="imagen.png" src="img/89193ae05ac40854.png"></p>
+<p>Para quitarla, en la misma opción de &#34;<strong>set administrative password</strong>&#34; nos permite cambiarla. Nos pide la contraseña actual y la nueva contraseña. En nueva contraseña se deja el campo en blanco.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Contraseña de usuario de la BIOS y Contraseña de arranque del dispositivo" duration="0">
+        <p>Se realiza el mismo proceso que el paso anterior, esta vez se selecciona <strong>Security&lt;&#34;Set user password&#34;</strong> (2) y se habilita <strong>&#34;Power on Password&#34;</strong> (1)</p>
+<p class="image-container"><img alt="imagen.png" src="img/65f208f81f5b72e1.png"></p>
+<p>Esto hará que nos pida la contraseña cada vez que arranquemos el equipo para hacer cualquier acción con el. Ver imagen del apartado anterior.</p>
+<p>Para quitarla es el mismo procedimiento que el caso anterior.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Arranques externos y Orden de arranque" duration="0">
+        <p>Para este apartado se ha deshabilitado el arranque por PXE(3) (imágenes enviadas por un servidor) y por dispositivos USB para evitar que nadie pueda intentar arrancar software e inspeccionar o modificar el contenido de nuestros discos. En caso de que el dispositivo tuviese lector de disco también sería conveniente desactivar el arranque por este medio. Por ultimo he mantenido el fastboot (1) deshabilitado ya que es una característica para sistemas Windows.</p>
+<p class="image-container"><img alt="Figura2 BIOS/UEFI de lenovo yoga 720 apartado boot" src="img/5e43581203210fd8.png"></p>
+<p>Figura2 BIOS/UEFI de lenovo yoga 720 apartado boot</p>
+<p>Por último sería recomendable eliminar los discos que no tienen sistema operativo del orden de arranque, si no fuese posible ponerlas de ultima opción. Esto reduce la posible superficie de ataque. En este equipo solo se pude ver un dispositivo que es el del único disco duro disponible.</p>
+<p>En otros equipos se puede ver el orden de arranque de la siguiente forma:</p>
+<p class="image-container"><img alt="image.png" src="img/663f7e63b312fa26.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Secure Boot" duration="0">
+        <p>El Secure Boot impide la ejecución en el arranque de software no firmado. Esto puede causar problemas con sistemas Linux, ya que el sistema de firmas lo gestionan principalmente Microsoft y los fabricantes. En mi investigación, encontré el siguiente dato interesante:</p>
+<p><em>Las versiones modernas de Ubuntu, a partir de Ubuntu 12.04.2 LTS y 12.10, normalmente arrancan e instalan sin problemas en la mayoría de los PC con Secure Boot activado. Esto se debe a que el cargador de arranque EFI de primera etapa de Ubuntu está firmado por Microsoft.</em></p>
+<p>En la BIOS/UEFI de esta máquina, la opción de Secure Boot se encuentra en la sección de <strong>Security &gt; &#34;Secure Boot&#34;</strong>. También es importante arrancar el sistema en modo <strong>UEFI</strong>.</p>
+<p>Desde allí se puede habilitar:</p>
+<p class="image-container"><img alt="imagen.png" src="img/663f7e63b312fa26.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Otras opciones:" duration="0">
+        <p><strong>-Intel PTT </strong><a href="https://www.intel.la/content/www/xl/es/support/articles/000007452/intel-nuc.html" target="_blank">https://www.intel.la/content/www/xl/es/support/articles/000007452/intel-nuc.html</a></p>
+<p>Intel Platform Trust Technology PTT es una solución de seguridad que proporciona funcionalidades similares a las del Trusted Platform Module (TPM) pero sin necesidad de un chip físico dedicado. PTT se integra en el firmware del sistema, permitiendo la gestión de credenciales y claves criptográficas de manera segura. Es especialmente útil para funciones como el <strong>cifrado de disco completo y la autenticación segura</strong></p>
+<p><strong>-Intel SGX </strong><a href="https://www.intel.la/content/www/xl/es/support/articles/000058952/software/intel-security-products.html" target="_blank">https://www.intel.la/content/www/xl/es/support/articles/000058952/software/intel-security-products.html</a></p>
+<p>Intel Software Guard Extensions (SGX) es una tecnología de seguridad que permite a los desarrolladores proteger datos y códigos sensibles mediante la creación de <strong>enclaves</strong> seguros en la memoria. Estos enclaves son áreas de memoria que están aisladas y protegidas, lo que impide que cualquier código fuerael enclave acceda a su contenido, incluso si el sistema operativo está comprometido</p>
+<p>AMD ofrece una alternativa a SGX con su suite de seguridad llamada <strong>Infinity Guard</strong>, que incluye características como la protección de memoria y el cifrado de datos en reposo. Aunque no tiene una funcionalidad equivalente exacta a SGX, Infinity Guard se centra en la seguridad del hardware y proporciona capacidades robustas para proteger datos en entornos de virtualización</p>
+<p class="image-container"><img alt="imagen.png" src="img/48a23d9c662b3765.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusión" duration="0">
+        <p>La configuración de la BIOS/UEFI es una primera línea de defensa en la seguridad de un sistema. Al implementar las medidas de seguridad descritas en este trabajo, se ha logrado endurecer significativamente el proceso de arranque del sistema.</p>
+<p>Las contraseñas de acceso, la restricción de dispositivos de arranque y la desactivación de funcionalidades innecesarias dificultan el acceso no autorizado al sistema y reducen la superficie de ataque. La activación del arranque seguro proporciona una capa adicional de protección al verificar la integridad del sistema operativo.</p>
+<p>Es importante destacar que la seguridad informática es un proceso continuo y que es importante mantenerse informado de vulnerabilidades descubiertas en nuestro sistema y aplicar mediadas para mitigarlas. Además de esto se debe de diseñar una defensa en profundidad y securizar el resto de componentes del sistema.</p>
+<p>En la siguiente parte del proyecto se hablará de como implementar medidas de seguridad en el gestor de arranque GRUB2 para sistemas GNU/Linux.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
